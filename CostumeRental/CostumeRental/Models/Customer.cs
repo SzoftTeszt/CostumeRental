@@ -21,6 +21,10 @@ namespace CostumeRental.Models
 
         }
 
+        public override string? ToString()
+        {
+            return $"{CustomerID} - {Name}";
+        }
     }
 }
     

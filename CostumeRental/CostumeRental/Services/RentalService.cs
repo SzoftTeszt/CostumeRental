@@ -21,6 +21,9 @@ namespace CostumeRental.Services
            Customers.Add(c);
 
         }
+        public List<Costume> ListAllCostumes() {
+            return this.Costumes.ToList();
+        }
     }
 }
 

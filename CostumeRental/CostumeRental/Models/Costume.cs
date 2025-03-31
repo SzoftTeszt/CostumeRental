@@ -26,7 +26,7 @@ namespace CostumeRental.Models
 
         public override string? ToString()
         {
-            return $"{CostumeID}: {Name} ({Size}, {Theme}, {PricePerDay}";
+            return $"{CostumeID}: {Name} ({Size}, {Theme}, {PricePerDay})";
         }
     }
 }

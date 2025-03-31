@@ -62,7 +62,7 @@ namespace CostumeRental
                 {
                     case "1":
                         Console.WriteLine("Összes jelmez:");
-                        //Display(rentalService.ListAllCostumes());
+                        Display(rentalService.ListAllCostumes());
                         break;
                     case "2":
                         //Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes());
