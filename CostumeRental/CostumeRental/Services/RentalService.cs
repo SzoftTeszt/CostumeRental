@@ -12,11 +12,17 @@ namespace CostumeRental.Services
         public List<Costume> Costumes { get; set; } = new List<Costume>();
         public List<Customer> Customers { get; set; } = new List<Customer>();
 
+
+
         public void AddCostume(Costume c) {
             Costumes.Add(c);
         } 
         public void AddCustomer(Customer c) {
            Customers.Add(c);
+
+        }
+        public List<Costume> ListAllCostumes() {
+            return this.Costumes.ToList();
         }
     }
 }

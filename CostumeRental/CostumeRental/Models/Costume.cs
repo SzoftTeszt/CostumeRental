@@ -24,6 +24,9 @@ namespace CostumeRental.Models
             PricePerDay = price;
         }
 
-       
+        public override string? ToString()
+        {
+            return $"{CostumeID}: {Name} ({Size}, {Theme}, {PricePerDay})";
+        }
     }
 }
