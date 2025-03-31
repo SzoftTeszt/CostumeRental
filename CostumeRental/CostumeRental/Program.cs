@@ -28,16 +28,16 @@ namespace CostumeRental
         {
             rentalService.AddCustomer(new Customer(1, "Józsa Béla"));
             rentalService.AddCustomer(new Customer(2, "Bálint Dezső"));
-            rentalService.AddCustomer(new Customer(2, "Sallai András"));
-            rentalService.AddCustomer(new Customer(2, "Rékasi József"));
+            rentalService.AddCustomer(new Customer(3, "Sallai András"));
+            rentalService.AddCustomer(new Customer(4, "Rékasi József"));
         }
 
         static void Main()
         {
-            if (File.Exists("costumes.csv")) LoadCostumes();
+            if (File.Exists("Costume.cs")) LoadCostumes();
             else SeedCostumes();
 
-            if (File.Exists("customers.csv")) LoadCustomers();
+            if (File.Exists("Customer.cs")) LoadCustomers();
             else SeedCustomers();
 
             string choice = string.Empty;
@@ -81,19 +81,55 @@ namespace CostumeRental
 
         static void SaveData()
         {
-            // TODO: Jelmezek és ügyfelek mentése fájlba
+            // Jelmezek mentése
+            using (var writer = new StreamWriter("Costume.cs"))
+            {
+                foreach (var costume in rentalService.ListAllCostumes())
+                {
+                    writer.WriteLine($"{costume.Code},{costume.Name},{costume.Size},{costume.Category},{costume.Price}");
+                }
+            }
+
+            // Ügyfelek mentése
+            using (var writer = new StreamWriter("Customer.cs"))
+            {
+                foreach (var customer in rentalService.ListCustomers())
+                {
+                    writer.WriteLine($"{customer.Id},{customer.Name}");
+                }
+            }
+
+            Console.WriteLine("Adatok mentése sikeresen megtörtént.");
         }
+
 
         static void LoadCostumes()
         {
-            // TODO: Jelmezek betöltése fájlból
+            if (File.Exists("Costume.cs"))
+            {
+                var lines = File.ReadAllLines("Costume.cs");
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+                    rentalService.AddCostume(new Costume(parts[0], parts[1], parts[2], parts[3], int.Parse(parts[4])));
+                }
+            }
         }
+
 
         static void LoadCustomers()
         {
-            // TODO: Ügyfelek betöltése fájlból
+            if (File.Exists("Customer.cs"))
+            {
+                var lines = File.ReadAllLines("Customers.cs");
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(',');
+                    rentalService.AddCustomer(new Customer(int.Parse(parts[0]), parts[1]));
+                }
+            }
         }
-    }
-     
 
-}
+
+
+    
