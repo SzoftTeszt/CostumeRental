@@ -25,6 +25,7 @@ namespace CostumeRental.Services
             return this.Costumes.ToList();
         }
 
+
         public List<Customer> ListCustomers() { 
             return this.Customers.ToList();
         }
@@ -34,7 +35,7 @@ namespace CostumeRental.Services
 
         public bool RentCostume(string name, string id) { 
             Customer customer = Customers.Find(x=>x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            Costume costume = Costumes.Find(x=>x.CostumeID==id)
+            Costume costume = Costumes.Find(x => x.CostumeID == id);
             if (customer != null && costume != null
                 && costume.IsAvailable)
             {
@@ -44,6 +45,12 @@ namespace CostumeRental.Services
             }
             return false;
         }
+
+        public void RemoveCostume(string id) {
+            Costumes.RemoveAll(x=>x.CostumeID.Equals(id));
+        }
+
+
     }
 }
 

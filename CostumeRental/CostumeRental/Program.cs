@@ -67,13 +67,19 @@ namespace CostumeRental
                     case "2":
                         Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes());
                         break;
-                    case "3": /* TODO */ break;
-                    case "4": /* TODO */ break;
+                    case "3":
+                        addCostume();
+                        break;
+                    case "4":
+                        RemoveCostume();
+                        break;
                     case "5":
                         Console.WriteLine("Ügyfelek:"); Display(rentalService.ListCustomers());
                         break;
                     case "6": /* TODO */ break;
-                    case "7": /* TODO */ break;
+                    case "7":
+                        RentCostume();
+                        break;
                     case "8": /* TODO */ break;
                     case "9": SaveData(); break;
                     default: Console.WriteLine("Érvénytelen választás."); break;
@@ -86,6 +92,12 @@ namespace CostumeRental
             foreach (var item in items) Console.WriteLine(item);
         }
 
+        static void RemoveCostume() {
+            Console.Write("Add meg a kosztum Id-jét: ");
+            string id = Console.ReadLine();
+            rentalService.RemoveCostume(id);
+        }
+
         static void RentCostume() {
             Console.WriteLine("Ügyfél neve:");
             string name = Console.ReadLine();
@@ -93,6 +105,19 @@ namespace CostumeRental
             string id= Console.ReadLine();
             string message= rentalService.RentCostume(name, id)?"Sikeres kölcsönzés!":"A kölcsönzés nem lehetséges!";
             Console.WriteLine("\n"+message);
+        }
+        static void addCostume() {
+            Console.Write("Add meg a kosztum Id-jét: ");
+            string id = Console.ReadLine();
+            Console.Write("Add meg a kosztum elnevezését: ");
+            string name = Console.ReadLine();
+            Console.Write("Add meg a kosztum méretét (S, M, L, XL, XXL): ");
+            string size = Console.ReadLine();
+            Console.Write("Add meg a kosztum kategóriáját: ");
+            string theme = Console.ReadLine();
+            Console.Write("Add meg a kosztum napi díját: ");
+            decimal price = Convert.ToDecimal(Console.ReadLine());
+            rentalService.AddCostume(new Costume(id,  name,  size,  theme,  price));  
         }
 
         static void SaveData()
