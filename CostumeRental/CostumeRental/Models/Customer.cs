@@ -14,6 +14,7 @@ namespace CostumeRental.Models
         public string Name { get; set; }
         public List<Costume> RentedCostumes { get; set; } = new List<Costume>();
 
+
         public Customer(int customerID, string name)
         {
             CustomerID = customerID;
