@@ -28,8 +28,22 @@ namespace CostumeRental.Services
         public List<Customer> ListCustomers() { 
             return this.Customers.ToList();
         }
+        public List<Costume> ListAvailableCostumes() { 
+            return this.Costumes.FindAll(x=>x.IsAvailable);
+        }
 
-
+        public bool RentCostume(string name, string id) { 
+            Customer customer = Customers.Find(x=>x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            Costume costume = Costumes.Find(x=>x.CostumeID==id)
+            if (customer != null && costume != null
+                && costume.IsAvailable)
+            {
+                costume.IsAvailable = false;
+                customer.RentedCostumes.Add(costume);
+                return true;            
+            }
+            return false;
+        }
     }
 }
 

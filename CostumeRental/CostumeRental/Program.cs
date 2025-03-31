@@ -65,7 +65,7 @@ namespace CostumeRental
                         Display(rentalService.ListAllCostumes());
                         break;
                     case "2":
-                        //Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes());
+                        Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes());
                         break;
                     case "3": /* TODO */ break;
                     case "4": /* TODO */ break;
@@ -84,6 +84,15 @@ namespace CostumeRental
         static void Display(IEnumerable<object> items)
         {
             foreach (var item in items) Console.WriteLine(item);
+        }
+
+        static void RentCostume() {
+            Console.WriteLine("Ügyfél neve:");
+            string name = Console.ReadLine();
+            Console.WriteLine("Jelmez ID:");
+            string id= Console.ReadLine();
+            string message= rentalService.RentCostume(name, id)?"Sikeres kölcsönzés!":"A kölcsönzés nem lehetséges!";
+            Console.WriteLine("\n"+message);
         }
 
         static void SaveData()
