@@ -70,7 +70,7 @@ namespace CostumeRental
                     case "3": /* TODO */ break;
                     case "4": /* TODO */ break;
                     case "5":
-                        //Console.WriteLine("Ügyfelek:"); Display(rentalService.ListCustomers());
+                        Console.WriteLine("Ügyfelek:"); Display(rentalService.ListCustomers());
                         break;
                     case "6": /* TODO */ break;
                     case "7": /* TODO */ break;

@@ -24,6 +24,12 @@ namespace CostumeRental.Services
         public List<Costume> ListAllCostumes() {
             return this.Costumes.ToList();
         }
+
+        public List<Customer> ListCustomers() { 
+            return this.Customers.ToList();
+        }
+
+
     }
 }
 
