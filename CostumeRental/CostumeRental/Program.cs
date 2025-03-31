@@ -60,11 +60,17 @@ namespace CostumeRental
 
                 switch (choice)
                 {
-                    case "1": Console.WriteLine("Összes jelmez:"); Display(rentalService.ListAllCostumes()); break;
-                    case "2": Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes()); break;
+                    case "1": Console.WriteLine("Összes jelmez:"); 
+                        //Display(rentalService.ListAllCostumes());
+                        break;
+                    case "2": 
+                        //Console.WriteLine("Elérhető jelmezek:"); Display(rentalService.ListAvailableCostumes());
+                        break;
                     case "3": /* TODO */ break;
                     case "4": /* TODO */ break;
-                    case "5": Console.WriteLine("Ügyfelek:"); Display(rentalService.ListCustomers()); break;
+                    case "5": 
+                        //Console.WriteLine("Ügyfelek:"); Display(rentalService.ListCustomers());
+                        break;
                     case "6": /* TODO */ break;
                     case "7": /* TODO */ break;
                     case "8": /* TODO */ break;
